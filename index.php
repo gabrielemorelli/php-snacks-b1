@@ -4,11 +4,21 @@ $email = $_GET['email'];
 $name = $_GET['name'];
 $age = $_GET['age'];
 
-if (strpos($email, '@') !==false && strpos($email, '.') !==false){
-    echo "L'indirizzo è valdio";
-}else {
-    echo "l'indirizzo non è valido";
+
+if (!empty($email) && !empty($name) &&!empty($age)){
+
+    if (strpos($email, '@') !==false && strpos($email, '.') !==false && strlen($name) > 3 && is_numeric($age) !==false) {
+        echo "accesso riuscito";
+       
+    } else {
+        echo "accesso non riuscito";
+    }
+} else {
+    echo 'campo vuoto';
 }
+
+
+
 
 echo '<h2> Stringa da dividere </h2>';
 
@@ -16,7 +26,9 @@ $stringaDaDividere ='Lorem  is simply dummy text of the printing and typesetting
 
 $stringaEsplosa = explode(".", $stringaDaDividere);
 
-var_dump($stringaEsplosa);
+for($i=0; $i<count($stringaEsplosa); $i++){
+    echo $stringaEsplosa[$i]. "<br>";
+}
 
 
 ?>
